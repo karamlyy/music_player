@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karamlyy Music Player</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="main_div">
+      <div class="music_container" data-tilt>
+        <h2 id="title">Lose Yourself</h2>
+        <h3 id="artist">Eminem</h3>
+        <div class="img_container">
+          <img src="img/music1_Eminem.jpg" height="200" width="200" alt="" />
+        </div>
+        <audio src="music/Eminem - Lose Yourself.mp3"></audio>
+
+        <div class="music_controls">
+          <i class="fas fa-backward" id="prev" title="Previous"></i>
+          <i class="fas fa-play main-button" id="play" title="Play"></i>
+          <i class="fas fa-forward" id="next" title="Next"></i>
+        </div>
+        <div style="margin-top: 35px; color: #171717; font-size: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Karamlyy Music Player</div>
+      </div>
+      <div class="footer"><br>
+        &copy; 2021 - Created by  <a href="https://karamlyy.github.io/profile/" target="_blank" style="color: blue;">Karam Afandi</a>
+    </div>
+    </div>
+    
+    <script>
+      const music = document.querySelector("audio");
+      const img = document.querySelector("img");
+      const play = document.getElementById("play");
+      const title = document.getElementById("title");
+      const artist = document.getElementById("artist");
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+
+      const songs = [
+        {
+          name: "Eminem - Lose Yourself",
+          img: "music1_Eminem",
+          title: "Lose Yourself",
+          artist: "Eminem",
+        },
+        {
+          name: "Eminem - Venom",
+          img: "music1_Eminem",
+          title: "Venom",
+          artist: "Eminem",
+        },
+        {
+          name: "Eminem - The Real Slim Shady",
+          img: "music1_Eminem",
+          title: "The Real Slim Shady",
+          artist: "Eminem",
+        },
+        {
+          name: "Eminem - Rap God",
+          img: "music1_Eminem",
+          title: "Rap God",
+          artist: "Eminem",
+        },
+        {
+          name: "Eminem - Not Afraid",
+          img: "music1_Eminem",
+          title: "Not Afraid",
+          artist: "Eminem",
+        },
+        {
+          name: "Lana Del Rey - Arcadia",
+          img: "music2_LanaDel",
+          title: "Arcadia",
+          artist: "Lana Del Rey",
+        },
+        {
+          name: "Lana Del Rey - Born To Die",
+          img: "music2_LanaDel",
+          title: "Born To Die",
+          artist: "Lana Del Rey",
+        },
+        {
+          name: "Lana Del Rey - Dark Paradise",
+          img: "music2_LanaDel",
+          title: "Dark Paradise",
+          artist: "Lana Del Rey",
+        },
+        {
+          name: "Lana Del Rey - Doin' Time",
+          img: "music2_LanaDel",
+          title: "Doin' Time",
+          artist: "Lana Del Rey",
+        },
+        {
+          name: "Lana Del Rey - Fuck it I love you",
+          img: "music2_LanaDel",
+          title: "Fuck it I love you",
+          artist: "Lana Del Rey",
+        },
+        {
+          name: "Lana Del Rey - High By The Beach",
+          img: "music2_LanaDel",
+          title: "High By The Beach",
+          artist: "Lana Del Rey",
+        },
+        {
+          name: "Lana Del Rey _ Diet Mountain Dew",
+          img: "music2_LanaDel",
+          title: "Diet Mountain Dew",
+          artist: "Lana Del Rey",
+        },
+        {
+          name: "Queen – Bohemian Rhapsody",
+          img: "music3_Queen",
+          title: "Bohemian Rhapsody",
+          artist: "Queen",
+        },
+        {
+          name: "Queen - The Show Must Go On",
+          img: "music3_Queen",
+          title: "The Show Must Go On",
+          artist: "Queen",
+        },
+        {
+          name: "Adele - Skyfall",
+          img: "music4_Adele",
+          title: "Skyfall",
+          artist: "Adele",
+        },
+        {
+          name: "Alphaville - Big In Japan",
+          img: "music5_Alphaville",
+          title: "Big In Japan",
+          artist: "Alphaville",
+        },
+        {
+          name: "AURORA - Runaway",
+          img: "music6_AURORA",
+          title: "Runaway",
+          artist: "AURORA",
+        },
+        {
+          name: "Ellie Goulding - Love Me Like You Do",
+          img: "music7_Ellie",
+          title: "Love Me Like You Do",
+          artist: "Ellie Goulding",
+        },
+        {
+          name: "Lil Nas X - Old Town Road",
+          img: "music8_lil",
+          title: "Old Town Road",
+          artist: "Lil Nas X",
+        },
+        {
+          name: "M.S.G. - Nightmare",
+          img: "music9_MSG",
+          title: "Nightmare",
+          artist: "M.S.G.",
+        },
+        {
+          name: "Monaldin - Femme Like You",
+          img: "music10_Monaldin",
+          title: "Femme Like You",
+          artist: "Monaldin",
+        },
+        {
+          name: "Metallica_ Nothing Else Matters",
+          img: "music11_Metallica",
+          title: "Nothing Else Matters",
+          artist: "Metallica",
+        },
+        {
+          name: "Metallica - Enter Sandman",
+          img: "music11_Metallica",
+          title: "Enter Sandman",
+          artist: "Metallica",
+        },
+        {
+          name: "Tanju Okan - Kadınım",
+          img: "music12_Tanju",
+          title: "Kadınım",
+          artist: "Tanju Okan",
+        },
+      ];
+
+      let isPlaying = false;
+      const playMusic = () => {
+        music.play();
+        isPlaying = true;
+        play.classList.replace("fa-play", "fa-pause");
+        img.classList.add("anime");
+      };
+
+      const pauseMusic = () => {
+        music.pause();
+        isPlaying = false;
+        play.classList.replace("fa-pause", "fa-play");
+        img.classList.remove("anime");
+      };
+
+      play.addEventListener("click", () => {
+        isPlaying ? pauseMusic() : playMusic();
+      });
+
+      loadSong = (songs) => {
+        title.textContent = songs.title;
+        artist.textContent = songs.artist;
+        music.src = "music/" + songs.name + ".mp3";
+        img.src = "img/" + songs.img + ".jpg";
+      };
+
+      songIndex = 0;
+      const prevSong = () => {
+        songIndex = (songIndex - 1 + songs.length) % songs.length;
+        loadSong(songs[songIndex]);
+        playMusic();
+      };
+
+      const nextSong = () => {
+        songIndex = (songIndex + 1) % songs.length;
+        loadSong(songs[songIndex]);
+        playMusic();
+      };
+
+      next.addEventListener("click", nextSong);
+      prev.addEventListener("click", prevSong);
+    </script>
+
+    <!-- tilt effect -->
+    <script
+
+      type="text/javascript"
+      src="js/script.js"
+    ></script>
+    <script type="text/javascript">
+      VanillaTilt.init(document.querySelector(".music_container"), {
+        max: 25,
+        speed: 400,
+      });
+
+    </script>
+   
+  </body>
+</html>
